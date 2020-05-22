@@ -1,0 +1,186 @@
+package com.example.qrcode;
+
+public class Licencia {
+    private String vegencia1 = "";
+    private String vigencia2 = "";
+    private String nombre_solicitante = "";
+    private String domicilio_solicitante = "";
+    private String ciudad_solicitante = "";
+    private int telefono_solicitante;
+    private int predial_obra;
+    private String ubicaion_obra = "";
+    private int superficie_obra;
+    private String documentos_obra;
+    private String fecha= "";
+    private String status= "";
+    private String nombre_suscriptor = "";
+    private int numero_perio;
+    private String domicilio_suscritor = "";
+    private String observaciones = "";
+    private int numero_licencia;
+    private String image = "";
+    private String pdf = "";
+
+    private int numero_recibo;
+
+    public int getNumero_recibo() {
+        return numero_recibo;
+    }
+
+    public void setNumero_recibo(int numero_recibo) {
+        this.numero_recibo = numero_recibo;
+    }
+
+    public String getVegencia1() {
+        return vegencia1;
+    }
+
+    public void setVegencia1(String vegencia1) {
+        this.vegencia1 = vegencia1;
+    }
+
+    public String getVigencia2() {
+        return vigencia2;
+    }
+
+    public void setVigencia2(String vigencia2) {
+        this.vigencia2 = vigencia2;
+    }
+
+    public String getNombre_solicitante() {
+        return nombre_solicitante;
+    }
+
+    public void setNombre_solicitante(String nombre_solicitante) {
+        this.nombre_solicitante = nombre_solicitante;
+    }
+
+    public String getDomicilio_solicitante() {
+        return domicilio_solicitante;
+    }
+
+    public void setDomicilio_solicitante(String domicilio_solicitante) {
+        this.domicilio_solicitante = domicilio_solicitante;
+    }
+
+    public String getCiudad_solicitante() {
+        return ciudad_solicitante;
+    }
+
+    public void setCiudad_solicitante(String ciudad_solicitante) {
+        this.ciudad_solicitante = ciudad_solicitante;
+    }
+
+    public int getTelefono_solicitante() {
+        return telefono_solicitante;
+    }
+
+    public void setTelefono_solicitante(int telefono_solicitante) {
+        this.telefono_solicitante = telefono_solicitante;
+    }
+
+    public int getPredial_obra() {
+        return predial_obra;
+    }
+
+    public void setPredial_obra(int predial_obra) {
+        this.predial_obra = predial_obra;
+    }
+
+    public String getUbicaion_obra() {
+        return ubicaion_obra;
+    }
+
+    public void setUbicaion_obra(String ubicaion_obra) {
+        this.ubicaion_obra = ubicaion_obra;
+    }
+
+    public int getSuperficie_obra() {
+        return superficie_obra;
+    }
+
+    public void setSuperficie_obra(int superficie_obra) {
+        this.superficie_obra = superficie_obra;
+    }
+
+    public String getDocumentos_obra() {
+        return documentos_obra;
+    }
+
+    public void setDocumentos_obra(String documentos_obra) {
+        this.documentos_obra = documentos_obra;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNombre_suscriptor() {
+        return nombre_suscriptor;
+    }
+
+    public void setNombre_suscriptor(String nombre_suscriptor) {
+        this.nombre_suscriptor = nombre_suscriptor;
+    }
+
+    public int getNumero_perio() {
+        return numero_perio;
+    }
+
+    public void setNumero_perio(int numero_perio) {
+        this.numero_perio = numero_perio;
+    }
+
+    public String getDomicilio_suscritor() {
+        return domicilio_suscritor;
+    }
+
+    public void setDomicilio_suscritor(String domicilio_suscritor) {
+        this.domicilio_suscritor = domicilio_suscritor;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public int getNumero_licencia() {
+        return numero_licencia;
+    }
+
+    public void setNumero_licencia(int numero_licencia) {
+        this.numero_licencia = numero_licencia;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
+    }
+
+}
