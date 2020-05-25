@@ -8,7 +8,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import retrofit2.Response;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -18,7 +18,7 @@ public class UriangatoClassService {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
+            public Response intercept(Chain chain) throws IOException {
                 Request originalRequest = chain.request();
                 HttpUrl originalUrl = originalRequest.url();
                 HttpUrl httpUrl = originalUrl.newBuilder()
@@ -27,7 +27,7 @@ public class UriangatoClassService {
 
                 Request.Builder requester = originalRequest.newBuilder().url(httpUrl);
                 Request request = requester.build();
-
+                Log.d(TAG, httpUrl.toString());
                 return chain.proceed(request);
             }
         }).build();

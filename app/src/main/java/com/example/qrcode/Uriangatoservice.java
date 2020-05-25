@@ -8,11 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public interface Uriangatoservice {
-    public String BASE_URL= "http://192.168.11.59:8080/urbano1.4/";
-    public String HASH_KEY = "encrypted";
-    public String HASH_VALUE = "906B8658D0DCF767B9B06FE7D5E2ADB3";
+    public String BASE_URL= "http://192.168.1.180/Dinnco/";
+    public String HASH_KEY = "id_area";
+    public String HASH_VALUE = "4";
 
-    @GET("core/api/construcion-api.php")
-    Call<Licencia> getLicencia();
+    @GET("current_status_system.php")
+    Call<Area> getLicencia();
 
 }
