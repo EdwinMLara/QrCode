@@ -1,7 +1,10 @@
 package com.example.qrcode;
 
-public class Licencia {
-    private String vegencia1 = "";
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Licencia implements Parcelable {
+    private String vigencia1 = "";
     private String vigencia2 = "";
     private String nombre_solicitante = "";
     private String domicilio_solicitante = "";
@@ -14,14 +17,48 @@ public class Licencia {
     private String fecha= "";
     private String status= "";
     private String nombre_suscriptor = "";
-    private int numero_perio;
+    private int numero_perito;
     private String domicilio_suscritor = "";
     private String observaciones = "";
     private int numero_licencia;
     private String image = "";
     private String pdf = "";
-
     private int numero_recibo;
+
+    protected Licencia(Parcel in){
+        vigencia1 = in.readString();
+        vigencia2 = in.readString();
+        nombre_solicitante = in.readString();
+        domicilio_solicitante = in.readString();
+        ciudad_solicitante = in.readString();
+        telefono_solicitante = in.readInt();
+        predial_obra = in.readInt();
+        ubicaion_obra = in.readString();
+        superficie_obra = in.readInt();
+        documentos_obra = in.readString();
+        fecha = in.readString();
+        status = in.readString();
+        nombre_suscriptor = in.readString();
+        numero_perito = in.readInt();
+        domicilio_suscritor = in.readString();
+        observaciones = in.readString();
+        numero_licencia = in.readInt();
+        image = in.readString();
+        pdf = in.readString();
+        numero_recibo = in.readInt();
+
+    }
+    public static final Parcelable.Creator<Licencia> CREATOR = new Parcelable.Creator<Licencia>() {
+        @Override
+        public Licencia createFromParcel(Parcel in) {
+            return new Licencia(in);
+        }
+
+        @Override
+        public Licencia[] newArray(int size) {
+            return new Licencia[size];
+        }
+    };
 
     public int getNumero_recibo() {
         return numero_recibo;
@@ -32,11 +69,11 @@ public class Licencia {
     }
 
     public String getVegencia1() {
-        return vegencia1;
+        return vigencia1;
     }
 
     public void setVegencia1(String vegencia1) {
-        this.vegencia1 = vegencia1;
+        this.vigencia1 = vegencia1;
     }
 
     public String getVigencia2() {
@@ -136,11 +173,11 @@ public class Licencia {
     }
 
     public int getNumero_perio() {
-        return numero_perio;
+        return numero_perito;
     }
 
     public void setNumero_perio(int numero_perio) {
-        this.numero_perio = numero_perio;
+        this.numero_perito = numero_perio;
     }
 
     public String getDomicilio_suscritor() {
@@ -183,4 +220,32 @@ public class Licencia {
         this.pdf = pdf;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(vigencia1);
+        dest.writeString(vigencia2);
+        dest.writeString(nombre_solicitante);
+        dest.writeString(domicilio_solicitante);
+        dest.writeString(ciudad_solicitante);
+        dest.writeInt(telefono_solicitante);
+        dest.writeInt(predial_obra);
+        dest.writeString(ubicaion_obra);
+        dest.writeInt(superficie_obra);
+        dest.writeString(documentos_obra);
+        dest.writeString(fecha);
+        dest.writeString(status);
+        dest.writeString(nombre_suscriptor);
+        dest.writeInt(numero_perito);
+        dest.writeString(domicilio_suscritor);
+        dest.writeString(observaciones);
+        dest.writeInt(numero_licencia);
+        dest.writeString(image);
+        dest.writeString(pdf);
+        dest.writeInt(numero_recibo);
+    }
 }
