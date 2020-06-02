@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView Vigencia1;
     private TextView Vigencia2;
     private TextView Direccion_solicitante;
+
+    private TextView Predial_obra,Ubicaicon_obra,Superfice,Fecha,Status;
+    private TextView Nombre_suscriptor,Numero_perito,Domicilio_suscriptor;
+
     private static final int REQUEST_CODE_QR_SCAN = 101;
     public static final int SUCCESS_CODE = 200;
     private Licencia li;
@@ -39,16 +43,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button)findViewById(R.id.button_scan);
-        Nombre = (TextView)findViewById(R.id.Nombre);
-        Num_recibo = (TextView)findViewById(R.id.num_recibo);
-        Vigencia1 = (TextView)findViewById(R.id.vigencia1);
-        Vigencia2 = (TextView)findViewById(R.id.vigencia2);
-        Direccion_solicitante = (TextView)findViewById(R.id.direccion_solicitante);
+        button = (Button) findViewById(R.id.button_scan);
+        Nombre = (TextView) findViewById(R.id.Nombre);
+        Num_recibo = (TextView) findViewById(R.id.num_recibo);
+        Vigencia1 = (TextView) findViewById(R.id.vigencia1);
+        Vigencia2 = (TextView) findViewById(R.id.vigencia2);
+        Direccion_solicitante = (TextView) findViewById(R.id.direccion_solicitante);
 
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, QrCodeActivity.class);
-            startActivityForResult(intent,REQUEST_CODE_QR_SCAN);
+        Predial_obra = (TextView) findViewById(R.id.predial_obra);
+        Ubicaicon_obra = (TextView) findViewById(R.id.ubicacion_obra);
+        Superfice = (TextView) findViewById(R.id.superficie);
+        Fecha = (TextView) findViewById(R.id.fecha);
+        Status = (TextView) findViewById(R.id.status);
+
+        Nombre_suscriptor = (TextView) findViewById(R.id.nombre_suscriptor);
+        Numero_perito = (TextView) findViewById(R.id.numero_perito);
+        Domicilio_suscriptor = (TextView) findViewById(R.id.domicilio_suscriptor);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, QrCodeActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_QR_SCAN);
+            }
         });
     }
 
@@ -108,14 +125,22 @@ public class MainActivity extends AppCompatActivity {
         areacall.enqueue(new Callback<Licencia>() {
             @Override
             public void onResponse(retrofit2.Call<Licencia> call, Response<Licencia> response) {
-                Log.d(LOGTAG,response.message());
+                Log.d(LOGTAG,"reponse" + response.message());
                 if (response.code() == SUCCESS_CODE) {
                     li = response.body();
                     Nombre.setText(li.getNombre_solicitante());
                     Num_recibo.setText(String.valueOf(li.getNumero_licencia()));
-                    Direccion_solicitante.setText(li.getDomicilio_solicitante());
+                    Direccion_solicitante.setText(li.getDomicilio_solicitante() + " " + li.getCiudad_solicitante());
                     Vigencia1.setText(li.getVegencia1());
                     Vigencia2.setText(li.getVigencia2());
+                    Predial_obra.setText(String.valueOf(li.getPredial_obra()));
+                    Ubicaicon_obra.setText(li.getUbicaion_obra());
+                    Superfice.setText(String.valueOf(li.getSuperficie_obra()));
+                    Fecha.setText(li.getFecha());
+                    Status.setText(li.getStatus());
+                    Nombre_suscriptor.setText(li.getNombre_suscriptor());
+                    Numero_perito.setText(String.valueOf(li.getNumero_perio()));
+                    Domicilio_suscriptor.setText(li.getDomicilio_suscritor());
                     //Toast.makeText(MainActivity.this, area.getNombre_area(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(MainActivity.this, "No hay respuesta", Toast.LENGTH_SHORT).show();
