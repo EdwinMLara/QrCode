@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOGTAG = "MAIN";
-    private Button button;
+    private Button button,button_localizacion;
     private TextView Nombre;
     private TextView Num_recibo;
     private TextView Vigencia1;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Nombre_suscriptor,Numero_perito,Domicilio_suscriptor;
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
+    private static final int REQUEST_CODE_JPS_ACTIVITY = 102;
     public static final int SUCCESS_CODE = 200;
     private Licencia li;
     private Area area;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (Button) findViewById(R.id.button_scan);
+        button_localizacion = (Button)findViewById(R.id.button_location);
+
         Nombre = (TextView) findViewById(R.id.Nombre);
         Num_recibo = (TextView) findViewById(R.id.num_recibo);
         Vigencia1 = (TextView) findViewById(R.id.vigencia1);
@@ -65,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QrCodeActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_QR_SCAN);
+            }
+        });
+
+        button_localizacion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, JPS.class);
+                startActivityForResult(intent, REQUEST_CODE_JPS_ACTIVITY);
             }
         });
     }

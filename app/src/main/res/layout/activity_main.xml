@@ -153,8 +153,12 @@
         android:layout_marginTop="10dp"
         android:text="Domicilio del Suscriptor" />
 
-
-
+    <Button
+        android:id="@+id/button_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Localizacion"
+        android:layout_marginTop="100dp"/>
 
 
 </LinearLayout>
