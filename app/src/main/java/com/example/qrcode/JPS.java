@@ -85,6 +85,7 @@ public class JPS extends AppCompatActivity {
                             textViewLongitud.setText(String.format("Logitud: %s",longitud));
                         }
                         progressBar.setVisibility(View.GONE);
+
                     }
                 }, Looper.getMainLooper());
 
