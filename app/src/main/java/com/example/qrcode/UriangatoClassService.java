@@ -39,4 +39,14 @@ public class UriangatoClassService {
                 .build()
                 .create(Uriangatoservice.class);
     }
+
+    public static Uriangatoservice postCreateUserService(){
+        return new Retrofit.Builder()
+                .baseUrl(Uriangatoservice.BASE_URL)
+                .build()
+                .create(Uriangatoservice.class);
+
+    }
+
+
 }
