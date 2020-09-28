@@ -9,7 +9,7 @@ public class Licencia implements Parcelable {
     private String nombre_solicitante = "";
     private String domicilio_solicitante = "";
     private String ciudad_solicitante = "";
-    private int telefono_solicitante;
+    private String telefono_solicitante;
     private int predial_obra;
     private String ubicaion_obra = "";
     private int superficie_obra;
@@ -31,7 +31,7 @@ public class Licencia implements Parcelable {
         nombre_solicitante = in.readString();
         domicilio_solicitante = in.readString();
         ciudad_solicitante = in.readString();
-        telefono_solicitante = in.readInt();
+        telefono_solicitante = in.readString();
         predial_obra = in.readInt();
         ubicaion_obra = in.readString();
         superficie_obra = in.readInt();
@@ -108,11 +108,11 @@ public class Licencia implements Parcelable {
         this.ciudad_solicitante = ciudad_solicitante;
     }
 
-    public int getTelefono_solicitante() {
+    public String getTelefono_solicitante() {
         return telefono_solicitante;
     }
 
-    public void setTelefono_solicitante(int telefono_solicitante) {
+    public void setTelefono_solicitante(String telefono_solicitante) {
         this.telefono_solicitante = telefono_solicitante;
     }
 
@@ -232,7 +232,7 @@ public class Licencia implements Parcelable {
         dest.writeString(nombre_solicitante);
         dest.writeString(domicilio_solicitante);
         dest.writeString(ciudad_solicitante);
-        dest.writeInt(telefono_solicitante);
+        dest.writeString(telefono_solicitante);
         dest.writeInt(predial_obra);
         dest.writeString(ubicaion_obra);
         dest.writeInt(superficie_obra);
