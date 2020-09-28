@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QrCode</string>
+    <string name="error_empty_username">EL usuario es requerido</string>
+    <string name="error_empty_password">La contraseña es requerida</string>
 </resources>
