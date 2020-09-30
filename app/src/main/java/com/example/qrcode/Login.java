@@ -2,6 +2,7 @@ package com.example.qrcode;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -88,6 +89,11 @@ public class Login extends AppCompatActivity {
                     if(status == 200){
                         JsonObject result = responseServer.getAsJsonObject("result");
                         token = result.get("token").getAsString();
+
+                        Intent tokenLoginIntent = new Intent(Login.this,MainActivity.class);
+                        tokenLoginIntent.putExtra("token",token);
+                        tokenLoginIntent.putExtra("isLogged",true);
+                        startActivity(tokenLoginIntent);
                     }
                 }
 
