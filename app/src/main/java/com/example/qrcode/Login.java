@@ -11,20 +11,29 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import java.io.IOException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class Login extends AppCompatActivity {
+    public static final String TAG = Login.class.getSimpleName();
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button buttonLogin;
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Log.v("TAG",TAG);
 
         editTextUsername = (EditText) findViewById(R.id.username);
         editTextPassword = (EditText) findViewById(R.id.password);
@@ -65,19 +74,28 @@ public class Login extends AppCompatActivity {
         }else{
             Usuario usuario = new Usuario(username,password);
             ApiUsuario apiUsuario = new ApiUsuario("generateToken",usuario);
-            Uriangatoservice service = (Uriangatoservice) UriangatoClassService.postCreateUserService();
+            Uriangatoservice service = UriangatoClassService.postCreateUserService();
 
-            retrofit2.Call<ResponseBody> loginCall = service.getLogin(apiUsuario);
+            retrofit2.Call<JsonObject> loginCall = service.getLogin(apiUsuario);
 
-            loginCall.enqueue(new Callback<ResponseBody>() {
+            loginCall.enqueue(new Callback<JsonObject>() {
                 @Override
-                public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Toast.makeText(Login.this, response.body().toString(),Toast.LENGTH_LONG).show();
+                public void onResponse(retrofit2.Call<JsonObject> call, Response<JsonObject> response) {
+                    JsonObject respondentsJson = response.body();
+                    JsonObject responseServer = respondentsJson.getAsJsonObject("response");
+                    Log.v(TAG,responseServer.toString());
+                    int status  = responseServer.get("status").getAsInt();
+                    if(status == 200){
+                        JsonObject result = responseServer.getAsJsonObject("result");
+                        token = result.get("token").getAsString();
+                    }
                 }
 
+
+
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(Login.this, t.getMessage(), LENGTH_SHORT).show();
                 }
             });
 

@@ -43,6 +43,7 @@ public class UriangatoClassService {
     public static Uriangatoservice postCreateUserService(){
         return new Retrofit.Builder()
                 .baseUrl(Uriangatoservice.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(Uriangatoservice.class);
 

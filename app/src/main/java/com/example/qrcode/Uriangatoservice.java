@@ -1,11 +1,13 @@
 package com.example.qrcode;
 
+import com.google.gson.JsonObject;
+
 import java.lang.annotation.Target;
 import java.net.URL;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -20,6 +22,6 @@ public interface Uriangatoservice {
 
     @Headers("Content-Type: application/json")
     @POST("logApiJwt.php")
-    Call<ResponseBody> getLogin(@Body ApiUsuario apiusuario);
+    Call<JsonObject> getLogin(@Body ApiUsuario apiusuario);
 
 }
