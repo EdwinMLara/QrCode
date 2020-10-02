@@ -13,7 +13,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UriangatoClassService {
-    public static final String TAG = "TAG";
+    public static final String TAG = Uriangatoservice.class.getSimpleName();
+
     public static Uriangatoservice getService(String id_hash){
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -47,6 +48,25 @@ public class UriangatoClassService {
                 .build()
                 .create(Uriangatoservice.class);
 
+    }
+
+    public static  Uriangatoservice getLicenciaByToken(String token){
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token)
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+        return new Retrofit.Builder()
+                .baseUrl(Uriangatoservice.BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(Uriangatoservice.class);
     }
 
 

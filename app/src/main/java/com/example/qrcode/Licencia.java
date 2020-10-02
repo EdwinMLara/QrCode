@@ -25,6 +25,7 @@ public class Licencia implements Parcelable {
     private String pdf = "";
     private int numero_recibo;
 
+    public Licencia(){}
     protected Licencia(Parcel in){
         vigencia1 = in.readString();
         vigencia2 = in.readString();

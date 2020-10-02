@@ -83,21 +83,21 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(retrofit2.Call<JsonObject> call, Response<JsonObject> response) {
                     JsonObject respondentsJson = response.body();
-                    JsonObject responseServer = respondentsJson.getAsJsonObject("response");
-                    Log.v(TAG,responseServer.toString());
-                    int status  = responseServer.get("status").getAsInt();
-                    if(status == 200){
-                        JsonObject result = responseServer.getAsJsonObject("result");
-                        token = result.get("token").getAsString();
+                    if(respondentsJson.has("response")) {
+                        JsonObject responseServer = respondentsJson.getAsJsonObject("response");
+                        Log.v(TAG, responseServer.toString());
+                        int status = responseServer.get("status").getAsInt();
+                        if (status == 200) {
+                            JsonObject result = responseServer.getAsJsonObject("result");
+                            token = result.get("token").getAsString();
 
-                        Intent tokenLoginIntent = new Intent(Login.this,MainActivity.class);
-                        tokenLoginIntent.putExtra("token",token);
-                        tokenLoginIntent.putExtra("isLogged",true);
-                        startActivity(tokenLoginIntent);
+                            Intent tokenLoginIntent = new Intent(Login.this, MainActivity.class);
+                            tokenLoginIntent.putExtra("token", token);
+                            tokenLoginIntent.putExtra("isLogged", true);
+                            startActivity(tokenLoginIntent);
+                        }
                     }
                 }
-
-
 
                 @Override
                 public void onFailure(Call<JsonObject> call, Throwable t) {

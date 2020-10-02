@@ -1,19 +1,19 @@
 package com.example.qrcode;
 
-public class ApiUsuario {
+public class ApiUsuario <T> {
     private String name;
-    private Usuario param;
+    private T param;
 
-    public ApiUsuario(String name, Usuario usuario){
+    public ApiUsuario(String name, T params){
         this.name = name;
-        this.param = usuario;
+        this.param = params;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public Usuario getParam(){
+    public T getParam(){
         return this.param;
     }
 }

@@ -24,4 +24,8 @@ public interface Uriangatoservice {
     @POST("logApiJwt.php")
     Call<JsonObject> getLogin(@Body ApiUsuario apiusuario);
 
+    @Headers("Content-Type: application/json")
+    @POST("logApiJwt.php")
+    Call<JsonObject> getLicenciaByToken(@Body ApiUsuario apiusuario);
+
 }
